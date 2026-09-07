@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,11 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.demo.Demo1Application;
 
 import com.demo.model.Employee;
+import com.demo.service.EmployeeService;
 
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
 
+	@Autowired
+	private EmployeeService employeeService;
 	List<Employee> employees=new ArrayList<>();
 	@GetMapping("/{id}")
 	public Employee getEmployeeById(@PathVariable("id")int id)
@@ -31,6 +35,7 @@ public class EmployeeController {
 	@PostMapping
 	public Employee saveEmployee(@RequestBody Employee employee)
 	{
+		/*
 		Employee e=new Employee();
 		e.setId(employee.getId());
 		e.setCompany(employee.getCompany());
@@ -41,6 +46,9 @@ public class EmployeeController {
 		employees.add(e);
 		Demo1Application.logger.info("Employee added successfully: {} "+employee.toString());
 		return e;
+		*/
+		Employee saveEmployee = employeeService.saveEmployee(employee);
+		return saveEmployee;
 	}
 	@GetMapping
 	public List<Employee> getAllEmployees()

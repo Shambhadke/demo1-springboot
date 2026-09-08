@@ -56,5 +56,10 @@ public class EmployeeController {
 		Demo1Application.logger.info("We are fetching all employees: {}");
 		return employees;
 	}
+	@GetMapping("/hii")
+	public String hii()
+	{
+		return "hii sham";
+	}
 	
 }

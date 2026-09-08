@@ -1,5 +1,7 @@
 package com.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -20,5 +22,10 @@ public class EmployeeService {
 		Demo1Application.logger.info("WE are in {} Employee service");
 		return save;
 		
+	}
+	public List<Employee> getAllEmployee()
+	{
+		Demo1Application.logger.info("We are fetching all employee {}");
+		return employeeRepoitory.findAll();
 	}
 }

@@ -54,7 +54,8 @@ public class EmployeeController {
 	public List<Employee> getAllEmployees()
 	{
 		Demo1Application.logger.info("We are fetching all employees: {}");
-		return employees;
+		
+		return employeeService.getAllEmployee();
 	}
 	@GetMapping("/hii")
 	public String hii()

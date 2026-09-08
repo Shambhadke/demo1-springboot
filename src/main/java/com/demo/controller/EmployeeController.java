@@ -2,6 +2,7 @@ package com.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,9 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	List<Employee> employees=new ArrayList<>();
 	@GetMapping("/{id}")
-	public Employee getEmployeeById(@PathVariable("id")int id)
+	public Optional<Employee> getEmployeeById(@PathVariable("id")int id)
 	{
-		employees.stream()
-					.filter(e->e.getId()==id)
-					.findFirst()
-					.orElse(null);
-		return null;
+		return employeeService.getEmployeeById(id);
 	}
 	@PostMapping
 	public Employee saveEmployee(@RequestBody Employee employee)

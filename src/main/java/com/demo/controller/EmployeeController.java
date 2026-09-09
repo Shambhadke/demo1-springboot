@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.demo.Demo1Application;
 
@@ -58,6 +59,11 @@ public class EmployeeController {
 	public String hii()
 	{
 		return "hii sham";
+	}
+	@GetMapping("/search")
+	public List<Employee> getEmployeeNameLike(@RequestParam("name") String name)
+	{
+		return employeeService.getEmployeeNameLike(name);
 	}
 	
 }

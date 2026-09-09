@@ -37,4 +37,9 @@ public class EmployeeService {
 		logger.info("Fetching employee by id {}");
 		return employeeRepoitory.findById(id);
 	}
+	public List<Employee> getEmployeeNameLike(String name)
+	{
+		logger.info("Fetching employee whose name like {}"+name);
+		return employeeRepoitory.getEmployeeLike("%"+name+"%");
+	}
 }

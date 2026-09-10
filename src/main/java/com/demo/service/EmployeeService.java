@@ -43,10 +43,16 @@ public class EmployeeService {
 
 		return employeeRepoitory.getEmployeeLike(name);
 	}
-	public List<Employee> deleteEmployeeByName(String name)
+	public int deleteEmployeeByName(String name)
 	{
 		logger.info("deleting employee by name {}"+name);
 		return employeeRepoitory.deleteEmployeeByName(name);
 
+	}
+	public Employee updateEmployee(Employee employee)
+	{
+		logger.info("updating employee {}"+employee.toString());
+		return employeeRepoitory.save(employee);
+		
 	}
 }

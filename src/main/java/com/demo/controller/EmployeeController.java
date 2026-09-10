@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,10 +67,16 @@ public class EmployeeController {
 		return employeeService.getEmployeeNameLike(name);
 	}
 	@GetMapping("/delete")
-	public List<Employee> deleteEMployeeByName(@RequestParam("name") String name)
+	public int deleteEMployeeByName(@RequestParam("name") String name)
 	{
 		return employeeService.deleteEmployeeByName(name);
 	}
 
+	@PatchMapping("/update")
+	public Employee updateEmployee(@RequestBody Employee employee)
+	{
+		return employeeService.updateEmployee(employee);
+		
+	}
 	
 }
